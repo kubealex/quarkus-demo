@@ -9,10 +9,8 @@ import javax.ws.rs.core.MediaType;
 
 import io.fabric8.kubernetes.client.KubernetesClient;
 
-@ApplicationScoped
-@Path("/kube")
+@Path("/")
 public class KubeScraper {
-
 
 @Inject 
 KubernetesClient kubernetesClient;
@@ -21,6 +19,6 @@ KubernetesClient kubernetesClient;
     @Produces(MediaType.TEXT_PLAIN)
     public String scrape() {
         System.out.println(kubernetesClient.getNamespace());
-        return kubernetesClient.getNamespace();
+        return kubernetesClient.pods().list().toString() + "   " + kubernetesClient.getNamespace();
     }
 }
