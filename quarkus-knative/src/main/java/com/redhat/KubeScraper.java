@@ -1,6 +1,8 @@
 package com.redhat;
 
-import javax.enterprise.context.ApplicationScoped;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,8 +19,8 @@ KubernetesClient kubernetesClient;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String scrape() {
+    public String scrape() throws UnknownHostException {
         System.out.println(kubernetesClient.getNamespace());
-        return kubernetesClient.pods().list().toString() + "   " + kubernetesClient.getNamespace();
+        return "The application is served by "+ InetAddress.getLocalHost().getHostName() + " in namespace: " + kubernetesClient.getNamespace();
     }
 }
