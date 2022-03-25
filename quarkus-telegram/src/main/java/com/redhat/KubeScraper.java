@@ -14,13 +14,14 @@ import io.fabric8.kubernetes.client.KubernetesClient;
 @Path("/")
 public class KubeScraper {
 
-@Inject 
-KubernetesClient kubernetesClient;
+    @Inject
+    KubernetesClient kubernetesClient;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String scrape() throws UnknownHostException {
         System.out.println(kubernetesClient.getNamespace());
-        return "The application is served by "+ InetAddress.getLocalHost().getHostName() + " in namespace: " + kubernetesClient.getNamespace();
+        return "The application is served by " + InetAddress.getLocalHost().getHostName()
+                + " in namespace: " + kubernetesClient.getNamespace();
     }
 }
