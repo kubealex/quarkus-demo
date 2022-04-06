@@ -2,7 +2,6 @@ package com.redhat;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
 
 import io.fabric8.kubernetes.client.KubernetesClient;
 
