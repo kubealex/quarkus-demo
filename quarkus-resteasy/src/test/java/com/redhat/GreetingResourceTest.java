@@ -15,7 +15,7 @@ public class GreetingResourceTest {
           .when().get("/hello")
           .then()
              .statusCode(200)
-             .body(is("Hello RESTEasy"));
+             .body(is("Hello! If you invoke me specifying your language (/hello/{language}), I will do my best to greet you in your language"));
     }
 
 }
