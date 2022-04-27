@@ -6,9 +6,16 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.enterprise.context.ApplicationScoped;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+@ApplicationScoped
 public class Utils {
-    public static String getUid(String username) throws InterruptedException, IOException {
+
+    @ConfigProperty(name = "secretfile.path", defaultValue = "/config/configfile")
+    String secretFile;
+
+    public String getUid(String username) throws InterruptedException, IOException {
         String command = "id -u " + username;
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(command);
@@ -18,7 +25,7 @@ public class Utils {
         return uid;
     }
 
-    public static String getGid(String username) throws InterruptedException, IOException {
+    public String getGid(String username) throws InterruptedException, IOException {
         String command = "id -g " + username;
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(command);
@@ -28,13 +35,15 @@ public class Utils {
         return uid;
     }    
 
-    public static String getSecretContent() throws IOException {
-        Path secretFile = Paths.get("/home/alerossi/configfile");
-        if (Files.exists(secretFile)) {
-            String content = new String(Files.readAllBytes(secretFile));
+    public String getSecretContent() {
+        System.out.println(secretFile);
+        try {
+            Path secretPath = Paths.get(secretFile);
+            String content = new String(Files.readAllBytes(secretPath));
             System.out.println(content);
             return content;
+        } catch (IOException e) {
+            return "CONFIGURATION FILE NOT FOUND";
         }
-        return "CONFIGURATION FILE NOT FOUND";
     }
 }
