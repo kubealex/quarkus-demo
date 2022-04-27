@@ -9,25 +9,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ApplicationScoped
 @Path("")
 public class ApplicationService {
 
     @Inject
-    ResponseBean responseBean;
+    ResponseService responseService;
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello! If you invoke me specifying your language (/hello/{language}), I will do my best to greet you in your language";
-    }
-
-    @GET
-    @Path("/myservice")
+    @Path("")
     @Produces(MediaType.APPLICATION_JSON)
-    public String svc() throws UnknownHostException {
-        responseBean.setSessionName(System.get)
-        return "Diplomatico! Hostname: " + InetAddress.getLocalHost().getHostName();
+    public String svc() throws UnknownHostException, JsonProcessingException {
+        ResponseBean responseBean = new ResponseBean();
+        responseBean = responseService.setResponseBean(responseBean);
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseBean);
     }
 }
