@@ -10,14 +10,15 @@ public class ResponseBean
     private Long pid;
     private String userId;
     private String groupId;
+    private String osVersion;
+    private String osArchitecture;
     private String secretContent;
 
     public ResponseBean() {
-        this("VARIABLE IS NOT DEFINED", "FILE NOT FOUND");
+        this("VARIABLE IS NOT DEFINED");
     }
-    public ResponseBean(String sessionName, String secretContent) {
+    public ResponseBean(String sessionName) {
         this.sessionName = sessionName;
-        this.secretContent = secretContent;
     }
     public String setSessionName(String sessionName)
     {
@@ -36,7 +37,7 @@ public class ResponseBean
 
     public String getSecretContent()
     {
-        return this.sessionName;
+        return this.secretContent;
     }    
     public String getHostName() {
         return hostName;
@@ -68,5 +69,17 @@ public class ResponseBean
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
+    }    
+    public String getOsVersion() {
+        return osVersion;
+    }
+    public void setOsVersion(String osVersion) {
+        this.osVersion = osVersion;
+    }
+    public String getOsArchitecture() {
+        return osArchitecture;
+    }
+    public void setOsArchitecture(String osArchitecture) {
+        this.osArchitecture = osArchitecture;
     }    
 }
