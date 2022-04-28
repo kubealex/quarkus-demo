@@ -41,7 +41,7 @@ public class ApplicationService {
     @Path("/stress")
     public String stress() {
         for (int thread = 0; thread < numCore * numThreadsPerCore; thread++) {
-            System.out.println("STRESSS");
+            System.out.println("launching locking thread....");
             new BusyThread("Thread" + thread, load, duration).start();
         }
         return "Stress test in place, look at autoscaling";

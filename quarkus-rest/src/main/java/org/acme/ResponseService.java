@@ -20,9 +20,7 @@ public class ResponseService {
         responseBean.setOsVersion(System.getProperty("os.version"));
         responseBean.setOsArchitecture(System.getProperty("os.arch"));
         responseBean.setSecretContent(utils.getSecretContent());
-        if (System.getenv("SESSION_NAME") != null ){
         responseBean.setSessionName(System.getenv("SESSION_NAME"));
-    }
         return responseBean;
     }
 

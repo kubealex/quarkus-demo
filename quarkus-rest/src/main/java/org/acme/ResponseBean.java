@@ -3,8 +3,7 @@ package org.acme;
 import javax.enterprise.context.RequestScoped;
 
 @RequestScoped
-public class ResponseBean
-{
+public class ResponseBean {
     private String sessionName;
     private String hostName;
     private Long pid;
@@ -17,28 +16,28 @@ public class ResponseBean
     public ResponseBean() {
         this("VARIABLE IS NOT DEFINED");
     }
+
     public ResponseBean(String sessionName) {
         this.sessionName = sessionName;
     }
-    public String setSessionName(String sessionName)
-    {
-        return this.sessionName = sessionName;
+
+    public void setSessionName(String sessionName) {
+        if (sessionName != null)
+            this.sessionName = sessionName;
     }
 
-    public String getSessionName()
-    {
+    public String getSessionName() {
         return this.sessionName;
     }
 
-    public String setSecretContent(String secretContent)
-    {
-        return this.secretContent = secretContent;
+    public void setSecretContent(String secretContent) {
+        this.secretContent = secretContent;
     }
 
-    public String getSecretContent()
-    {
+    public String getSecretContent() {
         return this.secretContent;
-    }    
+    }
+
     public String getHostName() {
         return hostName;
     }
@@ -69,17 +68,21 @@ public class ResponseBean
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
-    }    
+    }
+
     public String getOsVersion() {
         return osVersion;
     }
+
     public void setOsVersion(String osVersion) {
         this.osVersion = osVersion;
     }
+
     public String getOsArchitecture() {
         return osArchitecture;
     }
+
     public void setOsArchitecture(String osArchitecture) {
         this.osArchitecture = osArchitecture;
-    }    
+    }
 }
