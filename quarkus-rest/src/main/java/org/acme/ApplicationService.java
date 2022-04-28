@@ -44,7 +44,7 @@ public class ApplicationService {
             System.out.println("launching locking thread....");
             new BusyThread("Thread" + thread, load, duration).start();
         }
-        return "Stress test in place, look at autoscaling";
+        return "Stress test in place, wait for autoscaling to trigger..";
     }
 
 }
