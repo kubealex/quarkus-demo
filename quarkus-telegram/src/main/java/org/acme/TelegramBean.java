@@ -19,13 +19,11 @@ public class TelegramBean {
     KubernetesClient kubernetesClient;
 
     public String translate(IncomingMessage message) throws UnknownHostException {
-        switch (message.getText()) {
-            case "namespace":
-                return "Namespace is " + kubernetesClient.getNamespace();
-            case "hostname":
-                return "Hostname is " + InetAddress.getLocalHost().getHostName();
-        }
-        return "Please use one fo the allowed commands";
-        // do process
+        if (message.getText().equals("namespace"))
+            return "Namespace is " + kubernetesClient.getNamespace();
+        else if (message.getText().equals("hostname"))
+            return "Hostname is " + InetAddress.getLocalHost().getHostName();
+        else
+            return "Please use one of the allowed commands";
     }
 }
