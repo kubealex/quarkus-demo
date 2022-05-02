@@ -1,4 +1,4 @@
-package com.redhat;
+package org.acme;
 
 import javax.enterprise.context.ApplicationScoped;
 

@@ -1,4 +1,4 @@
-package com.redhat;
+package org.acme;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -19,15 +19,13 @@ public class TelegramBean {
     KubernetesClient kubernetesClient;
 
     public String translate(IncomingMessage message) throws UnknownHostException {
-        // or Exchange, or org.apache.camel.component.telegram.model.IncomingMessage (or
-        // both)
         switch (message.getText()) {
             case "namespace":
                 return "Namespace is " + kubernetesClient.getNamespace();
             case "hostname":
                 return "Hostname is " + InetAddress.getLocalHost().getHostName();
         }
-        return "First message!";
+        return "Please use one fo the allowed commands";
         // do process
     }
 }
