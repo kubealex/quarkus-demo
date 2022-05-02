@@ -22,6 +22,6 @@ public class KnativeServe {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "hello";
+        return "Hello, I am intended to be ran as a knative app";
     }
 }
